@@ -1,0 +1,4 @@
+{"event":"runStart","testCount":"2","initialSeed":"1463176648"}
+{"event":"testCompleted","status":"fail","labels":["Pagination Bar","startRange","Should give a correct startRange for high total"],"failures":[{"given":"","actual":"[1,2,3]\n╷\n│ Expect.equal\n╵\n[1,0,3]"}],"duration":"3"}
+{"event":"testCompleted","status":"pass","labels":["Pagination Bar","startRange","Should give a correct startRange for low total"],"failures":[],"duration":"0"}
+{"event":"runComplete","passed":"1","failed":"1","duration":"61"}

@@ -1,0 +1,5 @@
+{"event":"runStart","testCount":"3","initialSeed":"950650438"}
+{"event":"testCompleted","status":"pass","labels":["Pagination Bar","startRange","Should give a correct startRange for high total"],"failures":[],"duration":"3"}
+{"event":"testCompleted","status":"pass","labels":["Pagination Bar","startRange","Should give a correct startRange for low total"],"failures":[],"duration":"1"}
+{"event":"testCompleted","status":"pass","labels":["Pagination Bar","endRange","Should give a correct endRange for high total"],"failures":[],"duration":"0"}
+{"event":"runComplete","passed":"3","failed":"0","duration":"100"}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="Elm For Bamboo" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+    </plugin-info>
+
+    <taskType key="elmTestParser" name="Elm Test Parser" class="nl.avisi.bamboo.plugins.elmtest.parser.ElmTestParserTask">
+        <category name="test" />
+        <description>Parses and displays Elm test results</description>
+        <configuration class="nl.avisi.bamboo.plugins.elmtest.ElmTestTaskConfigurator"/>
+        <resource type="freemarker" name="edit" location="file-pattern-template.ftl"/>
+    </taskType>
+
+    <taskType key="elmTestRunner" name="Elm Test Runner" class="nl.avisi.bamboo.plugins.elmtest.runner.ElmTestRunnerTask">
+        <description>Runs Elm test</description>
+        <configuration class="nl.avisi.bamboo.plugins.elmtest.ElmTestTaskConfigurator"/>
+        <resource type="freemarker" name="edit" location="file-pattern-template.ftl"/>
+    </taskType>
+
+
+    <taskType key="elmFormatChecker" name="Elm Format Checker" class="nl.avisi.bamboo.plugins.elmtest.format.ElmFormatCheckerTask">
+        <description>Runs Elm test</description>
+        <configuration class="nl.avisi.bamboo.plugins.elmtest.ElmFormatConfigurator"/>
+        <resource type="freemarker" name="edit" location="elm-format-config.ftl"/>
+    </taskType>
+
+    <resource type="i18n" name="i18n" location="i18n"/>
+
+</atlassian-plugin>
