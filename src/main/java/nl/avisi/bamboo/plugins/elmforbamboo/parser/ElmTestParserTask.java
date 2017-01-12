@@ -1,4 +1,4 @@
-package nl.avisi.bamboo.plugins.elmtest.parser;
+package nl.avisi.bamboo.plugins.elmforbamboo.parser;
 
 import com.atlassian.bamboo.build.test.TestCollationService;
 import com.atlassian.bamboo.task.TaskContext;

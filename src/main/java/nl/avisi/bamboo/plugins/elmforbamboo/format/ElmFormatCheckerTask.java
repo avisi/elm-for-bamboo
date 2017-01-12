@@ -1,4 +1,4 @@
-package nl.avisi.bamboo.plugins.elmtest.format;
+package nl.avisi.bamboo.plugins.elmforbamboo.format;
 
 import com.atlassian.bamboo.process.ExternalProcessBuilder;
 import com.atlassian.bamboo.process.ProcessService;
@@ -9,7 +9,7 @@ import com.atlassian.bamboo.task.TaskResultBuilder;
 import com.atlassian.bamboo.task.TaskType;
 import com.atlassian.utils.process.ExternalProcess;
 
-import nl.avisi.bamboo.plugins.elmtest.ElmFormatConfigurator;
+import nl.avisi.bamboo.plugins.elmforbamboo.ElmFormatConfigurator;
 
 import org.jetbrains.annotations.NotNull;
 

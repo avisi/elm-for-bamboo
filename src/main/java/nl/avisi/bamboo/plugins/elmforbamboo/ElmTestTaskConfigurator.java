@@ -1,4 +1,4 @@
-package nl.avisi.bamboo.plugins.elmtest;
+package nl.avisi.bamboo.plugins.elmforbamboo;
 
 import com.atlassian.bamboo.collections.ActionParametersMap;
 import com.atlassian.bamboo.task.AbstractTaskConfigurator;

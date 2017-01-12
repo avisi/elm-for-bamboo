@@ -1,4 +1,4 @@
-package nl.avisi.bamboo.plugins.elmtest.runner;
+package nl.avisi.bamboo.plugins.elmforbamboo.runner;
 
 import com.atlassian.bamboo.process.BambooProcessHandler;
 import com.atlassian.bamboo.process.ExternalProcessViaBatchBuilder;
