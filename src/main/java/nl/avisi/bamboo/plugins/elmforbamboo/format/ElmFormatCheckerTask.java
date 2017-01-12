@@ -8,12 +8,14 @@ import com.atlassian.bamboo.task.TaskResult;
 import com.atlassian.bamboo.task.TaskResultBuilder;
 import com.atlassian.bamboo.task.TaskType;
 import com.atlassian.utils.process.ExternalProcess;
+import com.google.common.collect.Lists;
 
 import nl.avisi.bamboo.plugins.elmforbamboo.ElmFormatConfigurator;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class ElmFormatCheckerTask implements TaskType {
 
@@ -28,15 +30,19 @@ public class ElmFormatCheckerTask implements TaskType {
     public TaskResult execute(@NotNull TaskContext taskContext) throws TaskException {
         final String elmFormatLocation = taskContext.getConfigurationMap().get(ElmFormatConfigurator.ELM_FORMAT_LOCATION);
         final String elmFormatPaths = taskContext.getConfigurationMap().get(ElmFormatConfigurator.ELM_FORMAT_PATHS);
+        final String[] paths = elmFormatPaths.split(",");
+
+        List<String> command = Lists.newArrayList();
+        command.add(elmFormatLocation);
+        command.addAll(Arrays.asList(paths));
+        command.add("--validate");
 
         TaskResultBuilder builder = TaskResultBuilder.newBuilder(taskContext);
 
         ExternalProcess process =
                 processService.createExternalProcess(taskContext,
                         new ExternalProcessBuilder()
-                                .command(Arrays.asList(elmFormatLocation,
-                                        elmFormatPaths,
-                                        "--validate"))
+                                .command(command)
                                 .workingDirectory(taskContext.getWorkingDirectory()));
 
         process.execute();
