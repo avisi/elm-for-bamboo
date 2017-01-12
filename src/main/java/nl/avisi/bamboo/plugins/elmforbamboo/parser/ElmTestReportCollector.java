@@ -16,9 +16,6 @@ import java.util.Set;
 
 public class ElmTestReportCollector implements TestReportCollector {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ElmTestReportCollector.class);
-    private static final String DELIMITER = "/";
-
     @NotNull
     public TestCollectionResult collect(@NotNull File file) throws Exception {
         List<String> lines = Files.readLines(file, Charset.forName("UTF-8"));

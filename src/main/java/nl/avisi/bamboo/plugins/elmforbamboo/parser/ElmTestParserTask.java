@@ -11,9 +11,10 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+
 public class ElmTestParserTask implements TaskType {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ElmTestParserTask.class);
     private final TestCollationService testCollationService;
 
     public ElmTestParserTask(TestCollationService testCollationService) {
@@ -26,9 +27,10 @@ public class ElmTestParserTask implements TaskType {
 
         final String testOutputFile = taskContext.getConfigurationMap().get("testOutputFile");
 
-
-        testCollationService.collateTestResults(taskContext, testOutputFile, new ElmTestReportCollector());
-
+        File targetFile = new File(taskContext.getWorkingDirectory(), testOutputFile);
+        if (targetFile.exists()) {
+            testCollationService.collateTestResults(taskContext, testOutputFile, new ElmTestReportCollector());
+        }
         return taskResultBuilder.checkTestFailures().build();
     }
 

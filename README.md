@@ -40,7 +40,7 @@ An example task configuration would look like:
 The Elm Format Checker will verify if the source code verifies the style defined by `elm-format`.
 You can configure the path to `elm-format` (we do not rely on a npm module, since it is not there [yet](https://github.com/avh4/elm-format/pull/288)). If `elm-format` is not available on the Bamboo agent and you want to download anyway, maybe you are interested in using [elm-format-download](https://github.com/stil4m/elm-format-download).
 
-The *Paths to validate with elm-format* defaults to `src`. If you want to validate multiple paths, please use a comma separated list (`src,tests`).
+The *Paths to validate with elm-format* defaults to `src`. If you want to validate multiple paths, please use a comma separated list (`src,tests`). If the tests should be executed in the base directory, use `.`.
 
 <div style="border: 1px solid black; display: inline-block">
 ![Sample Elm Format Task](resources/screenshots/sample-elm-format-task.png?raw=true "Sample Elm Format Task")
