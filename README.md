@@ -20,9 +20,7 @@ To parse the results of the test runner later on in the build, a test output fil
 
 An example task configuration would look like:
 
-<div style="border: 1px solid black; display: inline-block">
 ![Sample Elm Test Runner Task](resources/screenshots/sample-elm-test-runner-task.png?raw=true "Sample Elm Test Runner Task")
-</div>
 
 
 ### Elm Test Parser
@@ -32,9 +30,7 @@ When you configure this task, make sure that the `Test Output File` configuratio
 
 An example task configuration would look like:
 
-<div style="border: 1px solid black; display: inline-block">
 ![Sample Elm Test Parser Task](resources/screenshots/sample-elm-test-parser-task.png?raw=true "Sample Elm Test Parser Task")
-</span>
 
 ### Elm Format Checker
 
@@ -43,9 +39,7 @@ You can configure the path to `elm-format` (we do not rely on a npm module, sinc
 
 The *Paths to validate with elm-format* defaults to `src`. If you want to validate multiple paths, please use a comma separated list (`src,tests`).
 
-<div style="border: 1px solid black; display: inline-block">
 ![Sample Elm Format Task](resources/screenshots/sample-elm-format-task.png?raw=true "Sample Elm Format Task")
-</span>
 
 ## License
 
