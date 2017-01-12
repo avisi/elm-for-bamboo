@@ -19,7 +19,7 @@ public class ElmTestTaskConfigurator extends AbstractTaskConfigurator implements
     @Override
     public void populateContextForCreate(@NotNull final Map<String, Object> context) {
         super.populateContextForCreate(context);
-        context.put("testOutputFile", "tests/elm-stuff/test-results.bson");
+        context.put("testOutputFile", "tests/elm-stuff/test-results.json");
     }
 
     @Override

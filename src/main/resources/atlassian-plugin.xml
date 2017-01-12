@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="Elm For Bamboo" plugins-version="2">
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
     <plugin-info>
         <description>${project.description}</description>
         <version>${project.version}</version>
         <vendor name="${project.organization.name}" url="${project.organization.url}" />
     </plugin-info>
 
-    <taskType key="elmTestParser" name="Elm Test Parser" class="nl.avisi.bamboo.plugins.elmtest.parser.ElmTestParserTask">
+    <taskType key="elmTestParser" name="Elm Test Parser" class="nl.avisi.bamboo.plugins.elmforbamboo.parser.ElmTestParserTask">
         <category name="test" />
         <description>Parses and displays Elm test results</description>
-        <configuration class="nl.avisi.bamboo.plugins.elmtest.ElmTestTaskConfigurator"/>
+        <configuration class="nl.avisi.bamboo.plugins.elmforbamboo.ElmTestTaskConfigurator"/>
         <resource type="freemarker" name="edit" location="file-pattern-template.ftl"/>
     </taskType>
 
-    <taskType key="elmTestRunner" name="Elm Test Runner" class="nl.avisi.bamboo.plugins.elmtest.runner.ElmTestRunnerTask">
+    <taskType key="elmTestRunner" name="Elm Test Runner" class="nl.avisi.bamboo.plugins.elmforbamboo.runner.ElmTestRunnerTask">
         <description>Runs Elm test</description>
-        <configuration class="nl.avisi.bamboo.plugins.elmtest.ElmTestTaskConfigurator"/>
+        <configuration class="nl.avisi.bamboo.plugins.elmforbamboo.ElmTestTaskConfigurator"/>
         <resource type="freemarker" name="edit" location="file-pattern-template.ftl"/>
     </taskType>
 
 
-    <taskType key="elmFormatChecker" name="Elm Format Checker" class="nl.avisi.bamboo.plugins.elmtest.format.ElmFormatCheckerTask">
+    <taskType key="elmFormatChecker" name="Elm Format Checker" class="nl.avisi.bamboo.plugins.elmforbamboo.format.ElmFormatCheckerTask">
         <description>Runs Elm test</description>
-        <configuration class="nl.avisi.bamboo.plugins.elmtest.ElmFormatConfigurator"/>
+        <configuration class="nl.avisi.bamboo.plugins.elmforbamboo.ElmFormatConfigurator"/>
         <resource type="freemarker" name="edit" location="elm-format-config.ftl"/>
     </taskType>
 

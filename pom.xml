@@ -12,6 +12,7 @@
     </organization>
 
     <name>Elm for Bamboo</name>
+    <description>Add Elm tasks to Bamboo</description>
     <packaging>atlassian-plugin</packaging>
 
     <properties>

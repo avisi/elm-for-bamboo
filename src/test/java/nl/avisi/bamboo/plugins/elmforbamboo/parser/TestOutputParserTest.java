@@ -26,7 +26,7 @@ public class TestOutputParserTest {
 
     @Test
     public void parseSuccessfulOutput() throws IOException {
-        InputStream resource = getClass().getResourceAsStream("/success.bson");
+        InputStream resource = getClass().getResourceAsStream("/success.json");
         List<String> lines = IOUtils.readLines(resource);
 
         TestCollectionResult result = testOutputParser.parse(lines);
@@ -37,7 +37,7 @@ public class TestOutputParserTest {
 
     @Test
     public void parseFailedOutput() throws IOException {
-        InputStream resource = getClass().getResourceAsStream("/failed.bson");
+        InputStream resource = getClass().getResourceAsStream("/failed.json");
         List<String> lines = IOUtils.readLines(resource);
 
         TestCollectionResult result = testOutputParser.parse(lines);

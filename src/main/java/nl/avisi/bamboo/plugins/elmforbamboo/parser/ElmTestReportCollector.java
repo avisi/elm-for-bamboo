@@ -29,7 +29,7 @@ public class ElmTestReportCollector implements TestReportCollector {
 
     @NotNull
     public Set<String> getSupportedFileExtensions() {
-        return Sets.newHashSet("bson"); // this will collect all *.result files
+        return Sets.newHashSet("json");
     }
 
 }
