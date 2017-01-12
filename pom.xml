@@ -11,13 +11,7 @@
         <url>https://www.avisi.nl/</url>
     </organization>
 
-    <parent>
-        <groupId>nl.avisi</groupId>
-        <artifactId>avisi-parent-pom</artifactId>
-        <version>1.3.0</version>
-    </parent>
-
-    <name>Bamboo Elm Plugin</name>
+    <name>Elm for Bamboo</name>
     <packaging>atlassian-plugin</packaging>
 
     <properties>
