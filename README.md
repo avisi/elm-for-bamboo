@@ -1,9 +1,11 @@
 # Elm for Bamboo
 
-Add Elm support to Bamboo. This Atlassian Bamboo add-on is available on the marketplace.
+Add Elm support to Bamboo. This Atlassian Bamboo add-on is available on the [marketplace](https://marketplace.atlassian.com/plugins/nl.avisi.bamboo.plugins.elm-for-bamboo/server/overview).
+It is hosted via the [Avisi](http://addons.avisi.com/) Atlassian account, but the project is open source.
+If you encounter issues you can create them in this Github project or in the Avisi [service desk](https://avisi-support.atlassian.net/servicedesk/customer/portal/18).
+Pull requests are welcome.
 
-
-Implemented tasks
+Implemented tasks:
 
 * **Elm Test Runner** Runs `elm-test` and stores the output.
 * **Elm Test Parser** Parses the output from the *Elm Test Runner* task and integrates with the default Bamboo test results.
