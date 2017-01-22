@@ -42,7 +42,13 @@ public class TestOutputParser {
                     final String suiteName = name.substring(0, testNameIndex);
                     final String testName = name.substring(testNameIndex + 1);
 
-                    TestResults testResults = new TestResults(suiteName, testName, Long.parseLong(event.getDuration()));
+                    //Deprecated method is used to comply with bamboo 5.11
+                    TestResults testResults = new TestResults(
+                            suiteName,
+                            testName,
+                            String.valueOf(Long.parseLong(event.getDuration()) / 1000)
+                    );
+
                     if ("pass".equals(event.getStatus())) {
                         testResults.setState(TestState.SUCCESS);
                         successfulTestResults.add(testResults);
