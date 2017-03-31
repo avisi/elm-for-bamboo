@@ -21,7 +21,7 @@
 
 
     <taskType key="elmFormatChecker" name="Elm Format Checker" class="nl.avisi.bamboo.plugins.elmforbamboo.format.ElmFormatCheckerTask">
-        <description>Runs Elm test</description>
+        <description>Checks if the code confirms to Elm format</description>
         <configuration class="nl.avisi.bamboo.plugins.elmforbamboo.ElmFormatConfigurator"/>
         <resource type="freemarker" name="edit" location="elm-format-config.ftl"/>
     </taskType>
