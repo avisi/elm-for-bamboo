@@ -3,7 +3,6 @@ package nl.avisi.bamboo.plugins.elmforbamboo.format;
 import com.atlassian.bamboo.process.ExternalProcessBuilder;
 import com.atlassian.bamboo.process.ProcessService;
 import com.atlassian.bamboo.task.TaskContext;
-import com.atlassian.bamboo.task.TaskException;
 import com.atlassian.bamboo.task.TaskResult;
 import com.atlassian.bamboo.task.TaskResultBuilder;
 import com.atlassian.bamboo.task.TaskType;
@@ -17,29 +16,31 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 public class ElmFormatCheckerTask implements TaskType {
 
     private final ProcessService processService;
 
-    public ElmFormatCheckerTask(ProcessService processService) {
-        this.processService = processService;
+    public ElmFormatCheckerTask(@NotNull final ProcessService processService) {
+        this.processService = checkNotNull(processService);
     }
 
     @NotNull
     @Override
-    public TaskResult execute(@NotNull TaskContext taskContext) throws TaskException {
+    public TaskResult execute(@NotNull final TaskContext taskContext) {
         final String elmFormatLocation = taskContext.getConfigurationMap().get(ElmFormatConfigurator.ELM_FORMAT_LOCATION);
         final String elmFormatPaths = taskContext.getConfigurationMap().get(ElmFormatConfigurator.ELM_FORMAT_PATHS);
         final String[] paths = elmFormatPaths.split(",");
 
-        List<String> command = Lists.newArrayList();
+        final List<String> command = Lists.newArrayList();
         command.add(elmFormatLocation);
         command.addAll(Arrays.asList(paths));
         command.add("--validate");
 
-        TaskResultBuilder builder = TaskResultBuilder.newBuilder(taskContext);
+        final TaskResultBuilder builder = TaskResultBuilder.newBuilder(taskContext);
 
-        ExternalProcess process =
+        final ExternalProcess process =
                 processService.createExternalProcess(taskContext,
                         new ExternalProcessBuilder()
                                 .command(command)

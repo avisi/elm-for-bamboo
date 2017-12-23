@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.avisi.bamboo.plugins</groupId>
     <artifactId>elm-for-bamboo</artifactId>
@@ -13,7 +14,7 @@
     <description>Add Elm tasks to Bamboo</description>
     <packaging>atlassian-plugin</packaging>
     <properties>
-        <bamboo.version>5.15.4</bamboo.version>
+        <bamboo.version>6.3.0</bamboo.version>
         <bamboo.data.version>LATEST</bamboo.data.version>
         <amps.version>6.2.11</amps.version>
         <java.version>1.8</java.version>
@@ -60,7 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>3.7.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>

@@ -2,8 +2,13 @@ package nl.avisi.bamboo.plugins.elmforbamboo.parser;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.Lists;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class TestEvent {
 
@@ -14,34 +19,39 @@ public class TestEvent {
     private final String duration;
 
     @JsonCreator
-    public TestEvent(@JsonProperty("event") String event,
-                     @JsonProperty("labels") List<String> labels,
-                     @JsonProperty("failures") List<Failure> failures,
-                     @JsonProperty("string") String status,
-                     @JsonProperty("duration") String duration) {
-        this.event = event;
-        this.labels = labels;
-        this.failures = failures;
-        this.status = status;
-        this.duration = duration;
+    public TestEvent(@NotNull @JsonProperty("event") final String event,
+                     @NotNull @JsonProperty("labels") final List<String> labels,
+                     @NotNull @JsonProperty("failures") final List<Failure> failures,
+                     @NotNull @JsonProperty("string") final String status,
+                     @NotNull @JsonProperty("duration") final String duration) {
+        this.event = checkNotNull(event);
+        this.labels = Lists.newArrayList(labels);
+        this.failures = Lists.newArrayList(failures);
+        this.status = checkNotNull(status);
+        this.duration = checkNotNull(duration);
     }
 
+    @NotNull
     public String getEvent() {
         return event;
     }
 
+    @NotNull
     public List<String> getLabels() {
-        return labels;
+        return Lists.newArrayList(labels);
     }
 
+    @NotNull
     public List<Failure> getFailures() {
-        return failures;
+        return Lists.newArrayList(failures);
     }
 
+    @NotNull
     public String getStatus() {
         return status;
     }
 
+    @NotNull
     public String getDuration() {
         return duration;
     }

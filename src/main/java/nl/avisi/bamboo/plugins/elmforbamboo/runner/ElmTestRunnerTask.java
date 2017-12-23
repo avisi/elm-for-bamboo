@@ -3,7 +3,6 @@ package nl.avisi.bamboo.plugins.elmforbamboo.runner;
 import com.atlassian.bamboo.process.BambooProcessHandler;
 import com.atlassian.bamboo.process.ExternalProcessViaBatchBuilder;
 import com.atlassian.bamboo.task.TaskContext;
-import com.atlassian.bamboo.task.TaskException;
 import com.atlassian.bamboo.task.TaskResult;
 import com.atlassian.bamboo.task.TaskResultBuilder;
 import com.atlassian.bamboo.task.TaskType;
@@ -24,13 +23,13 @@ public class ElmTestRunnerTask implements TaskType {
 
     @NotNull
     @Override
-    public TaskResult execute(@NotNull TaskContext taskContext) throws TaskException {
+    public TaskResult execute(@NotNull final TaskContext taskContext) {
         final String testFilePattern = taskContext.getConfigurationMap().get("testOutputFile");
 
-        TaskResultBuilder builder = TaskResultBuilder.newBuilder(taskContext);
+        final TaskResultBuilder builder = TaskResultBuilder.newBuilder(taskContext);
 
-        StringOutputHandler outputHandler = new StringOutputHandler();
-        ExternalProcess process =
+        final StringOutputHandler outputHandler = new StringOutputHandler();
+        final ExternalProcess process =
                 new ExternalProcessViaBatchBuilder()
                         .command(Arrays.asList("./node_modules/.bin/elm-test",
                                 "--compiler=" + taskContext.getWorkingDirectory().toString() + "/node_modules/.bin/elm-make",
@@ -42,7 +41,7 @@ public class ElmTestRunnerTask implements TaskType {
         process.execute();
 
         final String outputFile = taskContext.getWorkingDirectory() + "/" + testFilePattern;
-        try (FileWriter writer = new FileWriter(outputFile)) {
+        try (final FileWriter writer = new FileWriter(outputFile)) {
             writer.append(outputHandler.getOutput());
         } catch (IOException e) {
             LOGGER.error("Could not write file {}", outputFile, e);

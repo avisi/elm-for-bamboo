@@ -3,11 +3,11 @@
     <plugin-info>
         <description>${project.description}</description>
         <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
     </plugin-info>
 
     <taskType key="elmTestParser" name="Elm Test Parser" class="nl.avisi.bamboo.plugins.elmforbamboo.parser.ElmTestParserTask">
-        <category name="test" />
+        <category name="test"/>
         <description>Parses and displays Elm test results</description>
         <configuration class="nl.avisi.bamboo.plugins.elmforbamboo.ElmTestTaskConfigurator"/>
         <resource type="freemarker" name="edit" location="file-pattern-template.ftl"/>

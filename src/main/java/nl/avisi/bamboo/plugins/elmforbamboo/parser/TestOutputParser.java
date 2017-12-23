@@ -8,6 +8,7 @@ import com.atlassian.bamboo.resultsummary.tests.TestState;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,13 +29,14 @@ public class TestOutputParser {
         objectMapper = new ObjectMapper();
     }
 
-    public TestCollectionResult parse(List<String> lines) {
-        TestCollectionResultBuilder builder = new TestCollectionResultBuilder();
-        Collection<TestResults> successfulTestResults = Lists.newArrayList();
-        Collection<TestResults> failingTestResults = Lists.newArrayList();
+    @NotNull
+    public TestCollectionResult parse(@NotNull final List<String> lines) {
+        final TestCollectionResultBuilder builder = new TestCollectionResultBuilder();
+        final Collection<TestResults> successfulTestResults = Lists.newArrayList();
+        final Collection<TestResults> failingTestResults = Lists.newArrayList();
 
-        for (String line : lines) {
-            Optional<TestEvent> eventOptional = getTestEvent(line);
+        for (final String line : lines) {
+            final Optional<TestEvent> eventOptional = getTestEvent(line);
             eventOptional.ifPresent(event -> {
                 if ("testCompleted".equals(event.getEvent())) {
                     final String name = event.getLabels().stream().collect(Collectors.joining(DELIMITER));
@@ -43,7 +45,7 @@ public class TestOutputParser {
                     final String testName = name.substring(testNameIndex + 1);
 
                     //Deprecated method is used to comply with bamboo 5.11
-                    TestResults testResults = new TestResults(
+                    final TestResults testResults = new TestResults(
                             suiteName,
                             testName,
                             String.valueOf(Long.parseLong(event.getDuration()) / 1000)
@@ -55,8 +57,8 @@ public class TestOutputParser {
                     } else {
                         testResults.setState(TestState.FAILED);
                         final String errors = event.getFailures().stream()
-                                .map(failure -> failure.getActual() + failure.getGiven())
-                                .collect(Collectors.joining("\n-------------\n"));
+                                                   .map(failure -> failure.getActual() + failure.getGiven())
+                                                   .collect(Collectors.joining("\n-------------\n"));
                         testResults.addError(new TestCaseResultErrorImpl(errors));
                         failingTestResults.add(testResults);
                     }
@@ -70,7 +72,8 @@ public class TestOutputParser {
                 .build();
     }
 
-    private Optional<TestEvent> getTestEvent(String input) {
+    @NotNull
+    private Optional<TestEvent> getTestEvent(@NotNull final String input) {
         try {
             return Optional.of(objectMapper.readValue(input, TestEvent.class));
         } catch (IOException e) {

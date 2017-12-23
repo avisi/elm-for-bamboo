@@ -28,14 +28,14 @@ public class ElmFormatConfigurator extends AbstractTaskConfigurator implements T
     }
 
     @Override
-    public void populateContextForEdit(@NotNull final Map<String, Object> context, @NotNull TaskDefinition taskDefinition) {
+    public void populateContextForEdit(@NotNull final Map<String, Object> context, @NotNull final TaskDefinition taskDefinition) {
         super.populateContextForEdit(context, taskDefinition);
         context.put(ELM_FORMAT_LOCATION, taskDefinition.getConfiguration().get(ELM_FORMAT_LOCATION));
         context.put(ELM_FORMAT_PATHS, taskDefinition.getConfiguration().get(ELM_FORMAT_PATHS));
     }
 
     @Override
-    public void validate(@NotNull ActionParametersMap params, @NotNull ErrorCollection errorCollection) {
+    public void validate(@NotNull final ActionParametersMap params, @NotNull final ErrorCollection errorCollection) {
         super.validate(params, errorCollection);
 
         final String formatLocation = params.getString(ELM_FORMAT_LOCATION);
@@ -51,7 +51,7 @@ public class ElmFormatConfigurator extends AbstractTaskConfigurator implements T
 
     @NotNull
     @Override
-    public Map<String, String> generateTaskConfigMap(@NotNull ActionParametersMap params, @Nullable TaskDefinition taskDefinition) {
+    public Map<String, String> generateTaskConfigMap(@NotNull final ActionParametersMap params, @Nullable final TaskDefinition taskDefinition) {
         final Map<String, String> config = super.generateTaskConfigMap(params, taskDefinition);
         config.put(ELM_FORMAT_LOCATION, params.getString(ELM_FORMAT_LOCATION));
         config.put(ELM_FORMAT_PATHS, params.getString(ELM_FORMAT_PATHS));
@@ -59,4 +59,3 @@ public class ElmFormatConfigurator extends AbstractTaskConfigurator implements T
     }
 
 }
-
