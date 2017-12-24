@@ -6,9 +6,10 @@ import com.atlassian.bamboo.task.TaskConfigurator;
 import com.atlassian.bamboo.task.TaskDefinition;
 import com.atlassian.bamboo.utils.error.ErrorCollection;
 import com.atlassian.bamboo.utils.i18n.DefaultI18nBean;
-import com.atlassian.util.concurrent.NotNull;
 
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
@@ -23,13 +24,13 @@ public class ElmTestTaskConfigurator extends AbstractTaskConfigurator implements
     }
 
     @Override
-    public void populateContextForEdit(@NotNull final Map<String, Object> context, TaskDefinition taskDefinition) {
+    public void populateContextForEdit(@NotNull final Map<String, Object> context, @NotNull final TaskDefinition taskDefinition) {
         super.populateContextForEdit(context, taskDefinition);
         context.put("testOutputFile", taskDefinition.getConfiguration().get("testOutputFile"));
     }
 
     @Override
-    public void validate(ActionParametersMap params, ErrorCollection errorCollection) {
+    public void validate(@NotNull final ActionParametersMap params, @NotNull final ErrorCollection errorCollection) {
         super.validate(params, errorCollection);
 
         final String testOutputFile = params.getString("testOutputFile");
@@ -39,8 +40,8 @@ public class ElmTestTaskConfigurator extends AbstractTaskConfigurator implements
     }
 
     @Override
-    public Map<String, String> generateTaskConfigMap(ActionParametersMap params, @org.jetbrains.annotations.Nullable TaskDefinition taskDefinition) {
-
+    @NotNull
+    public Map<String, String> generateTaskConfigMap(@NotNull final ActionParametersMap params, @Nullable final TaskDefinition taskDefinition) {
         final Map<String, String> config = super.generateTaskConfigMap(params, taskDefinition);
 
         config.put("testOutputFile", params.getString("testOutputFile"));
