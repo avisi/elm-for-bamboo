@@ -22,7 +22,7 @@ public class TestEvent {
     public TestEvent(@NotNull @JsonProperty("event") final String event,
                      @NotNull @JsonProperty("labels") final List<String> labels,
                      @NotNull @JsonProperty("failures") final List<Failure> failures,
-                     @NotNull @JsonProperty("string") final String status,
+                     @NotNull @JsonProperty("status") final String status,
                      @NotNull @JsonProperty("duration") final String duration) {
         this.event = checkNotNull(event);
         this.labels = Lists.newArrayList(labels);
